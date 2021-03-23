@@ -171,10 +171,15 @@
 - `CFRunLoopObserverRef`：观察者，监听 RunLoop 在六个状态之间的改变：
 
     - `kCFRunLoopEntry = (1UL << 0)1`：即将进入 RunLoop；
+    
     - `kCFRunLoopBeforeTimers = (1UL << 1)2` ：即将处理 Timer；
+    
     - `kCFRunLoopBeforeSources = (1UL << 2)4`：即将处理 Source；
+    
     - `kCFRunLoopBeforeWaiting = (1UL << 5)32`：即将进入休眠；
+    
     - `kCFRunLoopAfterWaiting = (1UL << 6)64`：刚从休眠中唤醒；
+    
     - `kCFRunLoopExit = (1UL << 7)128`：即将退出 RunLoop。
 
     ```objective-c
@@ -204,9 +209,13 @@
 - 启动方式：
 
   - `- (void)run;` 
+  
   - `- (void)runUntilDate:(NSDate *)limitDate;`  
+  
   - `- (void)acceptInputForMode:(NSRunLoopMode)mode beforeDate:(NSDate *)limitDate;`
+  
   - `- (void)runMode:(NSString *)mode beforeDate:(NSDate *)limitDate;`
+
   - `void CFRunLoopRun(void);`
 
 - 退出方式：
