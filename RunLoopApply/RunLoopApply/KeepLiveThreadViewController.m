@@ -20,8 +20,10 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self noRunLoop];
-    [self addRunLoop];
+    //[self noRunLoop];
+    //[self addRunLoop];
+    
+    //[self runloop];
 }
 
 - (void)show1 {
@@ -50,7 +52,7 @@
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
         [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
         [runLoop performBlock:^{
-            NSLog(@"后执行");
+            NSLog(@"后执行 %@", [NSThread currentThread]);
         }];
         NSLog(@"先执行");
         [runLoop run];
