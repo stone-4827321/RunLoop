@@ -287,9 +287,9 @@
 
 - 应用启动后，主线程 RunLoop 会注册了两个 Observer：
 
-  - 第一个 Observer 监听*即将进入*事件，其回调内调用 `_objc_autoreleasePoolPush()` 创建自动释放池。优先级最高，保证创建释放池发生在其他所有回调之前。
+  - 第一个 Observer 监听**即将进入**事件，其回调内调用 `_objc_autoreleasePoolPush()` 创建自动释放池。优先级最高，保证创建释放池发生在其他所有回调之前。
 
-  - 第二个 Observer 监听两个事件， *即将进入休眠*会调用 `_objc_autoreleasePoolPop()` 和 ` _objc_autoreleasePoolPush() ` 释放旧的池并创建新池；*即将退出*调用 `_objc_autoreleasePoolPop()` 来释放自动释放池。其优先级最低，保证其释放发生在其他所有回调之后。
+  - 第二个 Observer 监听两个事件， **即将进入休眠**会调用 `_objc_autoreleasePoolPop()` 和 ` _objc_autoreleasePoolPush() ` 释放旧的池并创建新池；**即将退出**调用 `_objc_autoreleasePoolPop()` 来释放自动释放池。其优先级最低，保证其释放发生在其他所有回调之后。
 
 - 子线程的 RunLoop 不会自动启动，意味着不会自动创建自动释放池，子线程里面的对象也就没有池子可存放，在后面也无法自动释放，造成内存泄露。在多线程开发时，需要在线程调度方法中手动添加自动释放池。
 
